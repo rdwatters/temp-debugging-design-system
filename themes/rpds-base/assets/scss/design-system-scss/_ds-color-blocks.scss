@@ -1,0 +1,30 @@
+.design-system-color-block {
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    width: 160px;
+    height: 140px;
+    box-sizing: border-box;
+}
+
+.design-system-color-block--color {
+    display: block;
+    height: 100px;
+    margin-bottom:5px;
+}
+
+.design-system-color-block--info {
+    font-size: 12px;
+}
+
+//this is just an example gradient added for boilerplate purposes inside of content/brand-identity/colors.md
+.ds-ex-gradient {
+    background: rgba(0, 119, 210, 1);
+    background: -moz-linear-gradient(left, rgba(0, 119, 210, 1) 0%, rgba(0, 70, 127, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0, 119, 210, 1)), color-stop(100%, rgba(0, 70, 127, 1)));
+    background: -webkit-linear-gradient(left, rgba(0, 119, 210, 1) 0%, rgba(0, 70, 127, 1) 100%);
+    background: -o-linear-gradient(left, rgba(0, 119, 210, 1) 0%, rgba(0, 70, 127, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(0, 119, 210, 1) 0%, rgba(0, 70, 127, 1) 100%);
+    background: linear-gradient(to right, rgba(0, 119, 210, 1) 0%, rgba(0, 70, 127, 1) 100%);
+}

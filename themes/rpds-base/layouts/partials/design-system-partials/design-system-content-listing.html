@@ -1,0 +1,14 @@
+<ul class="design-system-content-listing">
+    {{- range . -}}
+        {{- if ne ( .Title | lower) "componentiframes" -}}
+        <li class="design-system-content-listing-item">
+            <a class="design-system-content-listing-item--link" href="{{.URL}}">
+                <h2 class="design-system-content-listing-item--heading">{{- .Title -}}</h2>
+                {{ with .Description }}
+                <p class="design-system-content-listing-item--description">{{ . | markdownify }}</p>
+                {{ end }}
+            </a>
+        </li>
+        {{- end -}}
+    {{- end -}}
+</ul>

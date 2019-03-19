@@ -1,0 +1,89 @@
+#design-system-global-header {
+    display: block;
+    width: 100%;
+    height: $ds-global-header-height;
+    border-bottom: 1px solid black;
+    background-color: $ds-global-header-background-color;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    width: 100vw;
+    z-index: 30;
+}
+
+#design-system-global-header--wrapper-inner {
+    height: $ds-global-header-height;
+    @include MQ(DSL) {
+        height: $ds-global-header-height;
+    }
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $MAX;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 100%;
+}
+
+//anchor around svg
+#design-system-search-toggle {
+    display: flex;
+    align-items: center;
+    line-height: $ds-global-header-height;
+    vertical-align: middle;
+    color: $ds-navigation-link-color;
+}
+
+.design-system-l-plus-only {
+    display: none;
+    @include MQ(DSL) {
+        display: block;
+    }
+}
+
+//anchor around svg
+#design-system-close-search {
+    height: $ds-global-header-height;
+    width: $ds-global-header-height;
+    line-height: $ds-global-header-height;
+    vertical-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0px;
+    align-items: flex-end;
+}
+
+//anchor inside nav to close global navigation
+#design-system-global-navigation-close-nav {
+    position: absolute;
+    top: .5em;
+    right: .5em;
+}
+
+//anchor around main site logo in header
+#design-system-home-link {
+    height: $ds-global-home-link-image-height * .8;
+    max-height: $ds-global-home-link-image-height * .8;
+    min-width: 30vw;
+    @include MQ(DSL) {
+        height: $ds-global-home-link-image-height;
+        max-height: $ds-global-home-link-image-height;
+    } // background-position:center center;
+    // background-repeat:no-repeat;
+    // background-size:contain;
+    width: auto;
+    position:relative;
+    .design-system-home-link-image {
+        position: relative;
+        height: 100%;
+        min-width: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

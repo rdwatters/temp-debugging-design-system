@@ -1,0 +1,30 @@
+
+<!-- Scripts from config.toml, popular JS and frontend libraries -->
+{{- if and (.Site.Params.includejq2) (not .Site.Params.includebsjs ) -}}
+<script src="{{ "js/jquery-2.2.4.min.js" | relURL}}"></script>
+{{- else if and (.Site.Params.includejq3) (not .Site.Params.includebsjs) -}}
+<script src="{{ "js/jquery-3.3.1.min.js" | relURL}}"></script>
+{{- else if .Site.Params.includebsjs -}}
+<script src="{{ "js/jquery-3.3.1.slim.min.js" | relURL}}"></script>
+<script src="{{ "js/popper-1.14.3.min.js" | relURL}}"></script>
+<script src="{{ "js/bootstrap-4.1.2.min.js" | relURL}}"></script>
+{{- end -}}
+
+<!--Check for script created with webpack (CLI "rpds -js") server-->
+{{- if (fileExists "assets/scripts/dist/app.min.js") -}}
+<!--If local dev, just serve up the app file-->
+  {{- if .Site.IsServer -}}
+    {{- $devScript := resources.Get "scripts/dist/app.min.js" -}}
+      <script src="{{$devScript.RelPermalink}}"/></script>
+  {{- else -}}
+<!-- The script created by webpack during local development, renamed according to projectname variable in config.toml -->
+    {{- $targetJsPath := add (add "/js/" ($.Site.Params.projectname | lower)) ".js" -}}
+    {{- $projDevScript1 := resources.Get "scripts/dist/app.min.js" -}}
+    {{- $projectscript := slice $projDevScript1 | resources.Concat $targetJsPath | minify | fingerprint -}}
+      <script src="{{ $projectscript.RelPermalink }}"></script>
+  {{- end -}}
+{{- end -}}
+
+
+
+

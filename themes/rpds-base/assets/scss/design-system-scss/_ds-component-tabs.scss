@@ -1,0 +1,60 @@
+.design-system-tabs {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: $MAX;
+    margin-top:2em;
+}
+
+.design-system-tabs--nav {
+    float: left;
+    width: 100%;
+    margin: 0;
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    border-bottom: 1px solid #ddd;
+    >li {
+        float: left;
+        margin-bottom: -1px;
+        >a {
+            float: left;
+            margin-right: 2px;
+            line-height: 1.42857143;
+            padding: 10px;
+            border: 1px solid transparent;
+            border-radius: 4px 4px 0 0;
+            &:hover {
+                border-color: #eee #eee #ddd;
+            }
+        }
+        &.design-system-tab--active {
+            >a,
+            >a:hover,
+            >a:focus {
+                color: #555;
+                cursor: default;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}
+
+.design-system-tabs-content {
+    float: left;
+    width: 100%;
+    >.design-system-tabs-content--pane {
+        display: none;
+        &.active {
+            display: block;
+            padding: 2.5% 3.5%;
+            background-color: #efefef;
+        }
+    }
+    >.design-system-tab-content--active {
+        display: block;
+    }
+}

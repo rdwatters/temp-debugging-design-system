@@ -1,0 +1,42 @@
+.design-system-asset {
+    display: flex;
+    flex-direction: column;
+    @include MQ(DSL) {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top:3rem;
+        margin-bottom:1rem;
+    }
+}
+
+.design-system-asset--info {
+    display: flex;
+    flex-direction: column;
+    @include MQ(DSL) {
+        flex-direction: row;
+    }
+}
+
+.design-system-asset--image {
+    display: flex;
+    height: 150px;
+    width: 150px;
+    max-height: 150px;
+    max-width: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    @include MQ(DSL) {
+        margin-left: 0px;
+        margin-right: 1em;
+    }
+    img {
+        max-width:100%;
+        height:auto;
+    }
+}
+
+.design-system-asset--button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

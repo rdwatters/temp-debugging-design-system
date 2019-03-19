@@ -1,0 +1,23 @@
+{{- $home := $.Site.GetPage "/_index.md" -}}
+{{- $fav := $home.Resources.GetMatch "*favicon*" -}}
+{{- $faviconAppleTouch := $fav.Resize "140x140" -}}
+{{- $favicon192 := $fav.Resize "192x192" -}}
+{{- $favicon512 := $fav.Resize "512x512" -}}
+{
+    "name": "{{$.Site.Params.appname}}",
+    "short_name": "{{$.Site.Params.appshortname}}",
+    "icons": [{
+            "src": "{{ $favicon192.RelPermalink }}",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "{{ $favicon512.RelPermalink }}",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "{{.Site.Params.appthemecolor}}",
+    "background_color": "{{.Site.Params.appbackgroundcolor}}",
+    "display": "standalone"
+}

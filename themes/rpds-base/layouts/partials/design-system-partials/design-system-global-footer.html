@@ -1,0 +1,19 @@
+<footer id="design-system-global-footer">
+    <div class="design-system-content-wrapper">
+        <span>
+            <small>&copy; {{ now.Format "2006"}} {{.Site.Copyright}}</small>
+        </span>
+        <nav id="design-system-global-footer-nav">
+            {{ range $ind, $pg := where .Site.RegularPages "Section" "utilities" }} {{if and $ind (gt $ind 0)}} &middot; {{end}}
+            <a
+                href="{{.RelPermalink}}">
+                {{- if eq .Title "Changelog" -}}Version {{.Site.Params.designsystemversion -}}{{- else -}}{{- .Title -}}{{end}}
+                </a>
+                {{ end }} 
+                {{ with .Site.Params.sourcecontrollink }} &middot; <a href="{{.}}" target="_blank">Source</a>{{end}} 
+                {{ with .Site.Params.clienttwitteraccount }} &middot; <a href="https://twitter.com/{{.}}" target="_blank">
+                    {{- partial "design-system-partials/design-system-twitter-icon.html" -}}
+                </a>{{end}}
+        </nav>
+    </div>
+</footer>

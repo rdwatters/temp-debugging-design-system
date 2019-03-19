@@ -1,0 +1,16 @@
+.tile {
+  background-color: green; }
+  @media only screen and (min-width: 640px) {
+    .tile {
+      background-color: #01589B; } }
+  @media only screen and (min-width: 960px) {
+    .tile {
+      background-color: #bfbfbf; } }
+  @media only screen and (min-width: 1440px) {
+    .tile {
+      background-color: orange; } }
+
+.tile-heading {
+  padding: 1em; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0ZGluIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQXdCLEVBQUU7RUFDMUI7SUFDRTtNQUNFLDBCQUEwQixFQUFFLEVBQUU7RUFDbEM7SUFDRTtNQUNFLDBCQUEwQixFQUFFLEVBQUU7RUFDbEM7SUFDRTtNQUNFLHlCQUF5QixFQUFFLEVBQUU7O0FBRW5DO0VBQ0UsYUFBYSxFQUFFIiwiZmlsZSI6InN0ZGluIiwic291cmNlc0NvbnRlbnQiOlsiLnRpbGUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjsgfVxuICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDY0MHB4KSB7XG4gICAgLnRpbGUge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzAxNTg5QjsgfSB9XG4gIEBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogOTYwcHgpIHtcbiAgICAudGlsZSB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjYmZiZmJmOyB9IH1cbiAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAxNDQwcHgpIHtcbiAgICAudGlsZSB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiBvcmFuZ2U7IH0gfVxuXG4udGlsZS1oZWFkaW5nIHtcbiAgcGFkZGluZzogMWVtOyB9XG4iXX0= */

@@ -1,0 +1,58 @@
+<svg id="design-system-sketch-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #ffae00;
+            }
+
+            .cls-2 {
+                fill: #ec6c00;
+            }
+
+            .cls-3 {
+                fill: #ffefb4;
+            }
+
+            .cls-4 {
+                fill: #fed305;
+            }
+        </style>
+    </defs>
+    <title>sketch-icon</title>
+    <g id="Page-1">
+        <g id="Sketch-Flat-Logo">
+            <g id="Group">
+                <g id="Base">
+                    <polygon id="Polygon" class="cls-1" points="90 162.87 0 58.3 38.99 5.47 90 0 141.01 5.47 180 58.3 90 162.87"
+                    />
+                </g>
+                <g id="Bottom-Back">
+                    <polygon id="Polygon-2" data-name="Polygon" class="cls-2" points="90 162.87 0 58.3 180 58.3 90 162.87" />
+                </g>
+                <g id="Bottom-Mid">
+                    <polygon id="Polygon-3" data-name="Polygon" class="cls-1" points="90 162.87 36.44 58.3 143.56 58.3 90 162.87"
+                    />
+                </g>
+                <g id="Top-Mid">
+                    <polygon id="Polygon-4" data-name="Polygon" class="cls-3" points="90 0 36.44 58.3 143.56 58.3 90 0" />
+                </g>
+                <g id="Top-Side-Left">
+                    <polygon id="Polygon-5" data-name="Polygon" class="cls-1" points="38.99 5.47 18.95 32.06 0 58.3 36.8 58.3 38.99 5.47"
+                    />
+                </g>
+                <g id="Top-Side-Right">
+                    <polygon id="Polygon-6" data-name="Polygon" class="cls-1" points="141.01 5.47 161.05 32.06 180 58.3 143.2 58.3 141.01 5.47"
+                    />
+                </g>
+                <g id="Top-Left">
+                    <polygon id="Polygon-7" data-name="Polygon" class="cls-4" points="38.99 5.47 36.44 58.3 90 0 38.99 5.47"
+                    />
+                </g>
+                <g id="Top-Right">
+                    <polygon id="Polygon-8" data-name="Polygon" class="cls-4" points="141.01 5.47 143.56 58.3 90 0 141.01 5.47"
+                    />
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

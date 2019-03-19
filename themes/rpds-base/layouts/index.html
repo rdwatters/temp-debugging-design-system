@@ -1,0 +1,12 @@
+{{ define "rpdsmain" }}
+{{ printf "<!-- Design System homepage template (/layouts/index.html) start-->" | safeHTML }}
+<main id="design-system-content" class="design-system-content">
+	<div class="design-system-content-wrapper">
+	{{- partial "design-system-partials/design-system-homepage-hero.html" . -}}
+		<div id="design-system-hompepage-sections">
+		{{- partial "design-system-partials/design-system-content-listing.html" ( where .Sections "Title" "!=" "Utilities" ) -}}
+		</div>
+	</div>
+</main>
+{{ printf "<!-- Design System homepage template (/layouts/index.html) end-->" | safeHTML }}
+{{ end }}

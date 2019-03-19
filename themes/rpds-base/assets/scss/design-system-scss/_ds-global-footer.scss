@@ -1,0 +1,33 @@
+#design-system-global-footer {
+    background-color: $ds-global-footer-background-color;
+    min-height:$ds-global-footer-min-height;
+    color: $ds-global-footer-link-color;
+    font-size:$base-font-size;
+    display:flex;
+    align-items:center;
+    small {
+    	font-size:$base-font-size;
+    }
+    span {
+        color: $ds-global-footer-link-color;
+    }
+    a {
+        color: $ds-global-footer-link-color;
+        display:inline-block;
+        height:16px;
+        width:auto;
+    }
+}
+
+#design-system-twitter-icon {
+    fill: $ds-global-footer-link-color;
+    width:20px;
+    height:20px;
+    display:inline-block;
+    position:relative;
+    top:.5em;
+}
+
+#design-system-global-footer-nav {
+	font-size:$base-font-size * .8;
+}

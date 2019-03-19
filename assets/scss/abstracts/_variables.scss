@@ -1,0 +1,60 @@
+//Uncomment for Grid Sass Map for Neat.io
+//See https://neat.bourbon.io/docs/latest/
+// $neat-grid: (
+//   columns: 12,
+//   gutter: 20px,
+// );
+// @import "./breakpoints";
+//Media Queries
+//For mixins in abstracts/_mediaqueries.scss
+
+$S:320px;
+$M:640px;
+$L:960px;
+$XL:1440px;
+
+// Used for max content widths, etc
+$MAX:1440px;
+
+
+//Client-specific Color Palette
+
+$rightpoint-red: #be1e2d;
+$rightpoint-yellow: #FEB81C;
+$rightpoint-black: #11110F;
+
+
+//Semantic Color Palette
+//NOTE: needed for utility classes in abstracts/_utilities.scss
+
+$brand-primary: $rightpoint-red;
+$brand-secondary: $rightpoint-yellow;
+$brand-tertiary: $rightpoint-yellow;
+$brand-accent: $rightpoint-red;
+$brand-success: $rightpoint-red;
+$brand-error: $rightpoint-red;
+$black:$rightpoint-black;
+$white: #ffffff;
+
+
+//Base Typography
+
+$base-font-size:16px; //sets root/html font size, 1 rem
+$base-font-family:"proxima-nova",helvetica,arial,sans-serif;
+$heading-font-family:$base-font-family;
+$heading-bottom-margin:.5em;
+$base-line-height:1.5;
+
+
+//Base Colors
+$base-background-color: $white;
+$base-font-color:$black;
+
+
+//Anchors & Buttons
+
+$button-border-radius:10px;
+$base-anchor-color:$brand-primary;
+$base-anchor-text-decoration:none;
+
+

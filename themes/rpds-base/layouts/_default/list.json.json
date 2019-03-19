@@ -1,0 +1,19 @@
+{{- define "entries" -}}
+[
+{{- range $index, $page := .Site.Pages.ByPublishDate -}}
+		{{if not $page.Params.removefromsearch }}
+		{{- if and $index (gt $index "0") -}},{{- end -}}
+		{
+		"id": {{$index}},
+		"url":"{{- $page.Permalink -}}",
+		"title":"{{- $page.Title | humanize | title -}}",
+		"section":"{{- .Section | humanize | title -}}",
+		"description":"{{- .Description | markdownify | plainify -}}",
+		{{- with .Params.tags -}}
+		"tags": "{{ delimit . " "}}",
+		{{- end -}}
+		"content":{{- $page.Plain | jsonify -}}}
+		{{end}}
+{{- end -}}
+]
+{{- end -}}

@@ -1,0 +1,25 @@
+
+//Removes curved appearance of inputs on iOS Safari
+input {
+	-webkit-appearance: none;
+	border-radius: 0;
+}
+
+
+//For more on placeholder: https://css-tricks.com/almanac/selectors/p/placeholder/
+input:placeholder-shown {
+
+}
+
+::placeholder {
+
+}
+
+input {
+	//removes default outline and border for inputs
+	outline:none;
+	border:none;
+	&[type="search"] {
+
+	}
+}

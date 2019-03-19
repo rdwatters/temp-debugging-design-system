@@ -1,0 +1,25 @@
+html,
+body {
+    min-height: 100%;
+    min-height: 100vh;
+    min-width: 100%;
+    min-width: 100vw;
+    width: 100%;
+    width: 100vw;
+    overflow-x:hidden;
+    border: none;
+    outline:none;
+    font-size:$base-font-size;
+    font-family:$base-font-family;
+    line-height:$base-line-height;
+    color:$base-font-color;
+    position:relative;
+}
+
+//Removes margin-top from most elements
+//Headings are controlled inside of _typography.scss
+//For rationale, see https://getbootstrap.com/docs/4.1/content/reboot/#approach
+ol,ul,dl,p,figure,img,hr,table {
+    margin-top:0px;
+    margin-bottom:1em;
+}

@@ -1,0 +1,16 @@
+<header id="design-system-homepage-hero" class="design-system-homepage-hero">
+	<div class="design-system-homepage-hero--half design-system-homepage-hero--image">
+		{{- with .Site.Params.homepageheroimage -}}
+ 			{{- $heroPath := path.Join "images" . -}}
+			<img src="{{- $heroPath -}}" alt="">
+		{{ else -}}
+			{{- partial "design-system-partials/design-system-homepage-hero-icon.svg" -}}
+		{{ end -}}
+	</div>
+	<div class="design-system-homepage-hero--half">
+		<h1 class="page-title txt-c">{{ with .Title }}{{ . | markdownify }}{{else}}{{.Site.Title}}{{end}}</h1>
+		{{ with .Params.subtitle }}
+			<div class="page-subtitle design-system-homepage-hero--subtitle txt-c">{{- . | markdownify -}}</div>
+		{{ end }}
+	</div>
+</header>

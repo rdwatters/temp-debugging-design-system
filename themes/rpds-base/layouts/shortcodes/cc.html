@@ -1,0 +1,31 @@
+{{ if .IsNamedParams }}
+    {{ $comp := .Get "name" }}
+    {{ $id := index (split $comp ".") 0}}
+    {{ $mw := .Get "max-width"}}
+    {{ $partialpath := path.Join "components/" $comp }}
+    {{- if ne (.Get "render") "false" -}}
+    </div>
+    <div class="design-system-rendered-code design-system-embedded-component" style="max-width:{{$mw}}">
+    {{ partial $partialpath }}	
+    </div>
+    {{- end -}}
+{{- if ne (.Get "render") "false" -}}
+<div class="design-system-content--interior">
+{{- end -}}
+    {{- if ne (.Get "code") "false" -}}
+    <div class="design-system-copyable-code-block">
+<pre>
+<code class="" id="{{$id}}">
+{{ htmlUnescape (replace (partial $partialpath | htmlEscape) "&amp;" "&")  }}
+</code>
+</pre>
+        <div class="ds-copy-button-wrapper">
+            <button class="button button--medium button--design-system-copy-code" data-clipboard-target="#{{$id}}">Copy</button>
+        </div>
+    {{- if ne (.Get "render") "false" -}}
+    </div>
+    {{- end -}}
+    {{- end -}}
+{{ else }}
+<strong>You forgot to include named parameters when declaring component shortcode inside {{.File.LogicalName}}. See wiki for more information.</strong>
+{{ end }}

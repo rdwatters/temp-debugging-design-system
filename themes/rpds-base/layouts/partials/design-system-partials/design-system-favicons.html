@@ -1,0 +1,11 @@
+{{- $home := .Site.GetPage "/_index.md" -}}
+{{- $fav := $home.Resources.GetMatch "*favicon*" -}}
+{{- $faviconAppleTouch := $fav.Resize "140x140" -}}
+{{- $favicon32 := $fav.Resize "32x32" -}}
+{{- $favicon16 := $fav.Resize "16x16" -}}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ $faviconAppleTouch.RelPermalink }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon32.RelPermalink }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ $favicon16.RelPermalink }}">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<meta name="msapplication-TileColor" content="{{.Site.Params.msapptilecolor}}">
+<meta name="theme-color" content="{{.Site.Params.appthemecolor}}">

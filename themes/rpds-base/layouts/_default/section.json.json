@@ -1,0 +1,13 @@
+{{- define "entries" }}
+[
+{{- range $ind, $page := .Pages -}}
+	{{- if and $ind (gt $ind "0") -}},{{- end -}}
+	{
+		"url":"{{- $page.URL -}}",
+		"title":"{{- $page.Title | humanize | title -}}",
+		"description":"{{- .Description | markdownify | plainify -}}",
+		"content":{{- .Content | jsonify -}}
+	 }
+{{- end -}}
+]
+{{- end -}}

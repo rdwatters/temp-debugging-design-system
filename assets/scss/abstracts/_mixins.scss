@@ -1,0 +1,195 @@
+// MEDIA QUERY MIXIN
+// Easily in line media queries using @include MQ(<SIZE VAR>){...code...}
+
+@mixin MQ($canvas) {
+  @if $canvas==S {
+    @media only screen and (min-width: $S) {
+      @content;
+    }
+  }
+  @else if $canvas==M {
+    @media only screen and (min-width: $M) {
+      @content;
+    }
+  }
+  @else if $canvas==L {
+    @media only screen and (min-width: $L) {
+      @content;
+    }
+  }
+  @else if $canvas==XL {
+    @media only screen and (min-width: $XL) {
+      @content;
+    }
+  }
+    @if $canvas==DSS {
+      @media only screen and (min-width: $DSS) {
+        @content;
+      }
+    }
+
+    @else if $canvas==DSM {
+      @media only screen and (min-width: $DSM) {
+        @content;
+      }
+    }
+
+    @else if $canvas==DSL {
+      @media only screen and (min-width: $DSL) {
+        @content;
+      }
+    }
+
+    @else if $canvas==DSXL {
+      @media only screen and (min-width: $DSXL) {
+        @content;
+      }
+    }
+
+  //all retina devices, including laptops
+  @else if $canvas==retina {
+    @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+      @content;
+    }
+  } //retina iphones in portrait only
+  @else if $canvas==retinaPortrait {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  } //retina iphones in landscape only
+  @else if $canvas==retinaLandscape {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+}
+
+// Helper mixin for above media queries
+// Defaults to small value, but can be used for rules that change per breakpoint, from S to XL
+@mixin MLXQ($rule, $svalue, $mvalue:$svalue, $lvalue:$mvalue, $xlvalue:$lvalue) {
+  #{$rule}: $svalue;
+  @include MQ(M) {
+    #{$rule}: $mvalue;
+  }
+  @include MQ(L) {
+    #{$rule}: $lvalue;
+  }
+  @include MQ(XL) {
+    #{$rule}: $xlvalue;
+  }
+}
+
+
+//Hardware Acceleration, GPU compositing
+
+@mixin hardware-accelerate {
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+// Centers block within parent element
+@mixin center {
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+// Font mixin used in base/_font.scss
+@mixin fonts($font: null, $path: '/assets/css/fonts', $weights: 100 200 300 400 500 600 700 800 900, $woff2: true) {
+  @each $weight in $weights {
+    @font-face {
+      font-family: "#{$font}";
+      @if $woff2 {
+        src: url('#{$path}/#{$font}-#{$weight}.woff2') format('woff2'),
+        url('#{$path}/#{$font}-#{$weight}.woff') format('woff'),
+        url('#{$path}/#{$font}-#{$weight}.ttf') format('truetype');
+      }
+      @else {
+        src: url('#{$path}/#{$font}-#{$weight}.woff') format('woff'),
+        url('#{$path}/#{$font}-#{$weight}.ttf') format('truetype');
+      }
+      font-weight: #{$weight};
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "#{$font}";
+      @if $woff2 {
+        src: url('#{$path}/#{$font}-#{$weight}-italic.woff2') format('woff2'),
+        url('#{$path}/#{$font}-#{$weight}-italic.woff') format('woff'),
+        url('#{$path}/#{$font}-#{$weight}-italic.ttf') format('truetype');
+      }
+      @else {
+        src: url('#{$path}/#{$font}-#{$weight}-italic.woff') format('woff'),
+        url('#{$path}/#{$font}-#{$weight}-italic.ttf') format('truetype');
+      }
+      font-weight: #{$weight};
+      font-style: italic;
+    }
+  }
+}
+
+// @mixin card ($bgcolor: $body-bg-color) {
+//   box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+//   transition: box-shadow .3s cubic-bezier(.25, .8, .25, 1);
+//   background-color: $bgcolor;
+//   &:hover {
+//     transition: box-shadow .2s cubic-bezier(.4, 0, .2, 1);
+//     box-shadow: 0 19px 38px rgba(0, 0, 0, .3), 0 15px 9pt rgba(0, 0, 0, .22);
+//   }
+// }
+@mixin card($level: 1, $hover:null) {
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  @if $level==1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  @else if $level==2 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  @else if $level==3 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  @else if $level==4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  @else if $level==5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+  @if $hover==2 {
+    &:hover {
+      transition: box-shadow .3s cubic-bezier(.25, .8, .25, 1);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+  }
+  @if $hover==3 {
+    &:hover {
+      transition: box-shadow .3s cubic-bezier(.25, .8, .25, 1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+  }
+  @if $hover==4 {
+    &:hover {
+      transition: box-shadow .3s cubic-bezier(.25, .8, .25, 1);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+  }
+  @if $hover==5 {
+    &:hover {
+      transition: box-shadow .3s cubic-bezier(.25, .8, .25, 1);
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+  }
+}
+
+//Clearfix: http://blog.teamtreehouse.com/a-better-clearfix-with-sass
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+

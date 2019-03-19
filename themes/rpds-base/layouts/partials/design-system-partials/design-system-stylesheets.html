@@ -1,0 +1,19 @@
+<!-- Design System Base Styles SCSS Build -->
+{{- if and .Site.IsServer ( or (ne .Section "page-templates") .IsNode ) -}}
+    {{ $dscssOpts := (dict "targetPath" "css/design-system-base-style.css" "enableSourceMap" true ) }}
+    {{ $dsstyles := resources.Get "scss/design-system-base-style.scss" | toCSS $dscssOpts }}
+    <link rel="stylesheet" href="{{ $dsstyles.Permalink }}" media="screen">
+{{- else if or ( ne .Section "page-templates" ) .IsNode -}}
+    {{ $dscssOpts := (dict "targetPath" "css/design-system-base-style.css" "config" "postcss.config.js" ) }}
+    {{ $dsstyles := resources.Get "scss/design-system-base-style.scss" | toCSS $dscssOpts | minify }}
+    <link rel="stylesheet" href="{{ $dsstyles.RelPermalink }}" integrity="{{ $dsstyles.Data.Integrity }}" media="screen">
+{{ end }}
+<!-- End Design System Base Styles SCSS Build-->
+
+<!--  SCSS just for the Page Template Info  -->
+{{- if and (.Site.Params.includepagetemplateinfo) (eq .Section "page-templates") -}}
+{{ $ptCssOpts := (dict "targetPath" "css/design-system-page-template-info.css" "enableSourceMap" true ) }}
+{{ $ptInfoStyle := resources.Get "scss/design-system-page-template-info.scss" | toCSS $ptCssOpts | minify }}
+<link rel="stylesheet" href="{{ $ptInfoStyle.RelPermalink }}" media="screen" type="text/css">
+{{- end -}}
+<!-- End SCSS just for page template info-->

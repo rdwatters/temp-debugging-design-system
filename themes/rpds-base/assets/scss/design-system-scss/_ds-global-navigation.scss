@@ -1,0 +1,86 @@
+#design-system-global-navigation {
+    transition: transform .3s ease-in-out;
+    position: fixed;
+    min-height: 100%;
+    width: $ds-navigation-width;
+    left: 0px;
+    top: 0px;
+    background-color: $ds-navigation-background-color;
+    transform: translateX(-240px);
+    z-index: 999;
+    max-height: 100vh;
+    &.design-system-global-navigation--open {
+        transition: transform .3s ease-in-out;
+        transform: translateX(0px);
+        -webkit-box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+#design-system-global-navigation--site-title>h3 {
+    margin-top: 1.5em;
+    padding-left: 1rem;
+    position: relative;
+}
+
+#design-system-global-navigation--wrapper-inner {
+    position: relative;
+    height: calc(100vh - #{$ds-global-header-height});
+    max-height: calc(100vh - #{$ds-global-header-height});
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.design-system-global-navigation--menu,
+.design-system-global-navigation--sub-menu {
+    list-style: none;
+    padding-left: 0px;
+    margin-left: 0px;
+    li {
+        width:calc(100% - 1rem);
+        a {
+            text-transform: $ds-navigation-text-transform;
+            color: $ds-navigation-link-color;
+            line-height: 1.5;
+        }
+        &.design-system-global-navigation--active-sub-menu-item {
+            background-color: $ds-navigation-link-background-color-active;
+            a {
+                color: $ds-navigation-link-color-active;
+            }
+        }
+    }
+}
+
+//anchor inside nav to close global navigation
+#design-system-global-navigation-close-nav {
+    position: absolute;
+    top: .5em;
+    right: .5em;
+    width: 25px;
+    height: 25px;
+}
+
+.design-system-global-navigation--menu {
+    margin-bottom: $ds-global-header-height * 1.5;
+}
+
+.design-system-global-navigation--parent-item {
+    font-size: $base-font-size * 1.1;
+    font-weight: bolder;
+    hr {
+        width: calc(#{$ds-navigation-width} - 2rem);
+        max-width: calc(#{$ds-navigation-width} - 2rem);
+        margin-left: 0px;
+    }
+}
+
+#design-system-global-navigation-open-nav {
+    display: flex;
+    align-items: center;
+    color: $ds-navigation-link-color;
+}

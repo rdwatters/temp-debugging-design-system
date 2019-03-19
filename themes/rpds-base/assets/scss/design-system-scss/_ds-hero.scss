@@ -1,0 +1,71 @@
+.design-system-homepage-hero {
+	width:100%;
+	height:100%;
+	
+	display:flex;
+	flex-direction:column;
+	@include MQ(DSL){
+		flex-direction:row;
+		align-items:center;
+		max-height:600px;
+		justify-content:space-between;
+	}
+}
+
+.design-system-homepage-hero--half {
+	width:100%;
+	@include MQ(DSL){
+		width:47%;
+	}
+}
+
+//h1 inside page content hero
+.design-system-homepage-hero--title {
+	text-align:center;
+}
+
+// Can be used to tweak .page-subtitle style for design system
+.design-system-homepage-hero--subtitle {
+
+}
+
+.design-system-hero {
+	display:block;
+	position:relative;
+}
+
+.design-system-hero-breadcrumb {
+	list-style:none;
+	margin-left:0px;
+	padding-left:0px;
+	display:inline;
+
+}
+
+
+.design-system-hero-breadcrumb--link {
+	position:relative;
+	display:inline-block;
+	margin-bottom:-2em;
+	font-size:14px;
+	line-height:1;
+	display:inline;
+}
+
+
+
+.design-system-hero--title {
+	display:block;
+	position:relative;
+	margin-top:1em;
+}
+
+.design-system-hero-breadcrumb--link__active {
+	color:lighten($base-font-color,30%);
+}
+
+.design-system-hero--lead-paragraph {
+	font-size: $ds-lead-paragraph-font-size;
+}
+
+

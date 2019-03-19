@@ -1,0 +1,9 @@
+//Uses font mixin in abstracts/mixins.scss
+//Call mixin using:
+//@mixin fonts($font: null, $path: '/assets/css/fonts', $weights: 100 200 300 400 500 600 700 800 900, $woff2: true)
+//Note that the mixin calls both regular and italics per weight listed
+//When using a font, you'll need to use the dasherized version in SCSS/CSS; e.g. "Proxima Nova" becomes "proxima-nova".
+//Change variables accordingly below
+
+
+@include fonts('proxima-nova','../fonts/proxima-nova',100 200 300 400 500 700, true);

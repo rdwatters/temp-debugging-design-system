@@ -1,0 +1,6 @@
+{{- partial "stylesheets.html" . -}}
+<!-- End FED SCSS -->
+{{- with .Params.componentfile -}}
+{{- partial . -}}
+{{- end -}}
+{{- partial "scripts.html" . -}}

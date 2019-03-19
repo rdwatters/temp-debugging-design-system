@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	{{- if ne .Section "componentiframes" -}}
+		{{- partial "design-system-partials/design-system-head.html" . -}}
+	{{- end -}}
+	
+	<body>
+	<!--The componentiframes section only writes a partial to a single file for it to be called in
+	using an iFrame inside the component pages.-->
+	
+	{{- if eq .Section "componentiframes" -}}
+		{{- partial "design-system-partials/design-system-componentiframes-fragment.html" . -}}
+	{{- else -}}
+		{{- partial "design-system-partials/design-system-global-header.html" . -}}
+
+		{{- partial "design-system-partials/design-system-global-navigation.html" . -}}
+
+			{{- block "rpdsmain" . -}}
+			{{- end -}}
+						
+		{{- partial "design-system-partials/design-system-global-footer.html" . -}}	
+	{{ end }}		
+	{{- partial "scripts.html" . -}}
+	{{- partial "design-system-partials/design-system-scripts.html" . -}}
+	</body>
+</html>

@@ -1,0 +1,8 @@
+//You can set these values inside of your config.toml
+//Setting these values inside this SCSS file will prevent the Design System
+//from generating the necessary screen icons at build time for
+//individual components
+$S: {{ .Site.Params.mqsmall }};
+$M: {{ .Site.Params.mqmedium }};
+$L: {{ .Site.Params.mqlarge }};
+$XL: {{ .Site.Params.mqextralarge }};

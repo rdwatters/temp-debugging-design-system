@@ -1,0 +1,32 @@
+<header id="design-system-global-header">
+    <div id="design-system-global-header--wrapper-inner">
+        <a href="#" id="design-system-global-navigation-open-nav">
+        {{- partial "design-system-partials/design-system-menu-icon.html" . -}}<span class="design-system-l-plus-only">Menu</span></a>
+        {{ $mainLogoPath := path.Join "images" $.Site.Params.globalheaderlogo }}
+        {{ $company := $.Site.Params.companyname }}
+        <!-- <a href="/" id="design-system-home-link" style="background-image:url({{ $mainLogoPath | relURL }});"> -->
+        <a href="/" id="design-system-home-link">
+    			<img class="design-system-home-link-image" src="{{$mainLogoPath | relURL}}" alt="Official logo of {{$company}}" title="Return to the {{$company}} design system homepage" type="image/svg+xml">
+    	</a>
+        <a href="#" id="design-system-search-toggle">
+    	<span class="design-system-l-plus-only">Search</span>		
+    			{{ partial "design-system-partials/design-system-search-icon.html" . }}
+    	</a>
+    </div>
+</header>
+<!-- <div id="design-system-search" class="design-system-search-wrapper--open"> -->
+<div id="design-system-search">
+    <div id="design-system-search--wrapper-inner">
+        <form action="">
+        <input type="search" id="design-system-search-input" placeholder="Search {{$.Site.Title}}...">
+        </form>
+        <a href="#" id="design-system-close-search">
+            {{ partial "design-system-partials/design-system-close-icon-1.html" . }}
+        </a>
+    </div>
+    <div id="design-system-search-results--wrapper">
+        <div id="design-system-search-results-length"></div>
+        <ul id="design-system-search-results">
+        </ul>
+    </div>   
+</div>

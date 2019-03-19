@@ -1,0 +1,14 @@
+<!-- Begin FED SCSS  -->
+{{ if .Site.IsServer }}
+    {{ $cssOpts := (dict "targetPath" "css/style.css" "enableSourceMap" true ) }}
+    {{ $styles := resources.Get "scss/style.scss" | toCSS $cssOpts }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+{{ else }}
+    {{ $companyStylesheet := add (add "css/" (.Site.Params.projectname | lower)) ".css" }}
+    {{ $cssOpts := (dict "targetPath" $companyStylesheet "config" "postcss.config.js") }}
+    {{ $styles := resources.Get "scss/style.scss" | toCSS $cssOpts | minify  }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+{{ end }}
+<!-- End FED SCSS -->
+
+

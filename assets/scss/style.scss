@@ -1,0 +1,12 @@
+// SCSS Source Organization Modified from https://sass-guidelin.es
+
+@import "./abstracts/abstracts"; // variables, mixins, functions, utilities
+@import "./base/base"; //reset, base styles, body/html, fonts
+@import "./layout/layout"; //grid, chrome, main
+@import "./elements/elements"; //buttons, anchors, etc (elements in design system)
+@import "./components/components"; //combinations of elements
+@import "./page-templates/page-templates"; //page-specific styles
+
+
+
+

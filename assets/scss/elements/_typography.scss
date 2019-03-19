@@ -1,0 +1,26 @@
+//headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-font-family;
+	margin-top: 1em;
+	margin-bottom: .5em;
+}
+
+//used to define the size of the page title in the design system site
+.page-title {
+	font-size: 2.5rem;
+	@include MQ(L) {
+		font-size: 3rem;
+	}
+}
+
+.page-subtitle {
+	font-size: 1.2rem;
+	@include MQ(L) {
+		font-size: 1.5rem;
+	}
+}

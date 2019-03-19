@@ -1,0 +1,175 @@
+# SITE PARAMETER CONFIGURATION
+# BaseURL for rendered site
+baseURL = ""
+# Language config
+languageCode = "en-us"
+# Logging
+log = true
+verboseLog = false
+# Site <title>
+title = "Rightpoint Design System"
+# Defines dir name when running 'hugo' to build site
+publishDir= "publish"
+# Keep false to prevent local pygments from parsing code blocks
+pygmentsUseClassic = false
+pygmentsCodeFences = false
+# Rel URLs = Important for flexibility
+relativeURLs = true
+# Defines copyright in global footer (year is auto-generated)
+copyright = "Ryan Watters"
+# Defines layout directory. 
+# Do NOT change without understanding the consequences for templating and the RDPS CLI
+layoutDir = "layouts"
+# Makes Hugo look up the RPDS base theme first before
+# Do not change unless you want to add more theme components specific to your project
+# Theme Components: https://gohugo.io/themes/theme-components/
+theme = ["rpds-base"]
+
+# CUSTOM SITE PARAMATER CONFIGURATION
+[params]
+	##### BEGIN DEVELOPMENT PARAMS #####
+	# Include jQuery 2.2.4.min.js
+	includejq3 = false
+	# Include jQuery 3.3.1.min.js
+	includejq2 = false
+	# Include Bootstrap Javascript 
+	# (jq slim 3.3.1, popper 1.14.3, bootstrap js 4.1.2)
+	# Note that setting to "true" overrides jq2/3 above
+	includebsjs = false
+	# Add Google Analytics ID (begins with "UA-"")
+	googleanalyticsid = ""
+	### Begin Web App Manifest Configuration
+	# App name for web manifest
+	appname = "Rightpoint Design System"
+	# Short app name (e.g. with iOS homescreen icon)
+  appshortname = "RPDS"
+	# App theme color
+	appthemecolor = "#ffffff"
+	# App background color (e.g. with iOS homescreen icon)
+	appbackgroundcolor = "#ffffff"
+	# Background color for tile on MS Windows
+  msapptilecolor = "#da532c"
+	### End Web App Manifest Configuration
+	# Will add another "CSS" tab next to "SCSS" inside component code tabs
+	renderscsstocss = true
+	# Setting to true adds noindex to ALL site pages
+	sitenoindex = true
+	## Set Media Query Values
+	mqsmall = "320px"
+	mqmedium = "640px"
+	mqlarge = "960px"
+	mqextralarge = "1440px"
+	##### END DEVELOPER PARAMS ######
+
+	##### BEGIN CONTENT PARAMS #####
+	#Used in {{< companyname >}} shortcode in body copy
+	companyname = "Rightpoint, LLC"
+	# Used to create the final JS and CSS filename
+	projectname = "Rightpoint"
+	#Used in {{< companysite >}} shortcode in body copy
+	companysite = "Rightpoint.com"
+	#Creates a "Source link" in global footer
+	sourcecontrollink = "https://github.com/rdwatters/design-system-starter-kit"
+	# sourcecontrollink = "https://rightpoint.visualstudio.com/RP%20-%20Design%20System"
+	#Global Header logo, put in static/images
+	globalheaderlogo = "global-header-logo.svg"
+	#Logo/image used for homepage hero, put in static/images
+	#If left empty, it will default to the Design System SVG that will take the brand primary
+	#Color from assets/scss/abstracts/_variables.scss
+	# homepageheroimage = "rightpoint-icon.svg"
+	homepageheroimage = ""
+	# Preview Image for Facebook, etc; put in static/images
+	defaultsocialimage = "default-social-image.png"
+	# Twitter Account, include the "@"
+	clienttwitteraccount = "@ryandwatters"
+	# CMS, either "Sitecore" or "EPiServer"
+	cms = ""
+	#Creates version # in global footer
+	designsystemversion = 0.1
+	# Includes the ability to toggle an overlay for all page templates
+	# To modify individual page templates, change includepagetemplateinfo: false inside individaul .md
+	includepagetemplateinfo = true
+	##### END CONTENT PARAMS #####
+
+# OUTPUTS
+
+# Also use to create site.webmanifest and various json files
+
+[mediaTypes]
+    [mediaTypes."text/webmanifest"]
+        suffixes = ["webmanifest"]
+
+[outputFormats]
+    [outputFormats.webmanifest]
+        baseName = "site"
+        isPlainText = true
+        mediaType = "text/webmanifest"
+
+# Used to create /index.json for client-side search, site manifest
+[outputs]
+	home = ["html", "json", "webmanifest"]
+
+# MARKDOWN FRONT MATTER
+# Defines cascade for "last modified date in individual pages"
+[frontmatter]
+lastmod = ["lastmod","publishdate"]
+
+# TAXONOMY PAGES
+# Change empty strings to "categories" and "tags", respectively,
+# if you want Hugo to create auto-list pages at /categories & /tags
+[taxonomies]
+  category = ""
+  tags = ""
+
+# PERMALINKS 
+# Routes all "utilities" pages to root/slug
+[permalinks]
+	utilities = "/:title"
+
+# MARKDOWN PARSING
+# 'hrefTargetBlank = false' opens external links in same tab/window
+# https://gohugo.io/getting-started/configuration/#configure-blackfriday
+[blackfriday]
+  fractions = false
+  plainIDAnchors = true
+  hrefTargetBlank = true
+
+
+# MENU CONFIGURATION (GLOBAL NAVIGATION)
+# 'weight' dictates order of parent items in global nav
+[[menu.main]]
+	name = "Principles"
+	weight = 1
+	identifier = "Principles"
+	url = "/principles/"
+
+[[menu.main]]
+	name = "Developers"
+	weight = 2
+	identifier = "Developers"
+	url = "/developers/"
+
+[[menu.main]]
+	name = "Brand Identity"
+	weight = 3
+	identifier = "Brand Identity"
+	url = "/brand-identity"
+
+[[menu.main]]
+	name = "Elements"
+	weight = 4
+	identifier = "Elements"
+	url = "/elements/"
+
+[[menu.main]]
+	name = "Components"
+	weight = 5
+	identifier = "Components"
+	url = "/components/"
+
+[[menu.main]]
+	name = "Page Templates"
+	weight = 6
+	identifier = "Page Templates"
+	url = "/page-templates/"
+

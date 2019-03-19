@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{.Title}}</title>
+	{{ partial "design-system-partials/design-system-stylesheets.html" . }}
+	{{ partial "stylesheets.html" . }}
+</head>
+<body>
+{{ block "pagetemplate" . }}
+
+{{ end }}
+{{ partial "scripts.html" . }}	
+<!-- ADD PAGE TEMPLATE INFO SCRIPT FOR PAGE TEMPLATES -->
+{{- if and .Site.Params.includepagetemplateinfo .Params.includepagetemplateinfo -}}
+<!-- Adds page templates modal that shows content written for each of the page templates. See wiki for more information-->
+	{{ $dspt := resources.Get "/design-system-scripts/design-system-toggle-page-template-info.js" }}
+<script src="{{ $dspt.RelPermalink }}"></script>
+{{- end -}}	
+</body>
+</html>

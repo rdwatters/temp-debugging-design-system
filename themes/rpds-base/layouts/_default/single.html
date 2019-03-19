@@ -1,0 +1,8 @@
+{{- define "rpdsmain" -}}
+	<main id="design-system-content" class="design-system-content">
+		<div class="design-system-content--interior">
+		{{ partial "design-system-partials/design-system-hero-interior.html" . }}
+		{{.Content}}		
+		</div>
+	</main>	
+{{- end -}}

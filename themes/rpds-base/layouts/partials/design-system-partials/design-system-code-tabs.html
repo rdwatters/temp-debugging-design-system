@@ -1,0 +1,123 @@
+{{- $compname := .File.BaseFileName -}}
+{{- .Scratch.Set "scssHasLength" false -}}
+{{- .Scratch.Set "hasJsComments" false -}}
+{{- with .Params.scssfile -}}
+    {{- if fileExists . -}}
+        {{ if gt ( readFile . | len ) 0 }}
+             {{- $.Scratch.Set "scssHasLength" true -}}
+        {{ end }}
+    {{- end -}}
+{{- end -}}
+
+<div class="design-system-tabs">
+        <ul class="design-system-tabs--nav">
+            {{- if isset .Params "componentfile" -}}
+            <li class="design-system-tab--active">
+                <a href="#html">HTML</a>
+            </li>
+            {{- end -}}
+            <!--If scssfile front matter variable is set, show the clickable SCSS tab-->    
+            {{- with .Params.scssfile -}}
+            <li>
+                <a href="#scss">SCSS</a>
+            </li>
+            {{- end -}}
+            {{- if and .Site.Params.renderscsstocss ( $.Scratch.Get "scssHasLength" ) -}}
+            <li>
+                <a href="#css">CSS</a>
+            </li>
+            {{- end -}}
+            <!--If jsmodule front matter variable is set, show the clickable JavaScript tab-->
+            {{- with .Params.jsmodule -}}
+            <li>
+                <a href="#javascript">JavaScript</a>
+            </li>
+            {{- end -}}
+        </ul>       
+        <div class="design-system-tabs-content">
+            {{ if and (isset .Params "componentfile") ( templates.Exists ( path.Join "partials" .Params.componentfile ))  }}
+            <div id="html" class="design-system-tabs-content--pane design-system-tab-content--active">
+                <div class="design-system-copyable-code-block">
+                        <pre><code id="ds-component-html">{{- partial .Params.componentfile | htmlEscape | htmlUnescape -}}</code></pre>
+                    <div class="ds-copy-button-wrapper">
+                        <button class="button button--medium button--design-system-copy-code" data-clipboard-target="#ds-component-html">Copy</button>
+                    </div>
+                </div>
+            </div>
+            {{- end -}}
+
+{{- with .Params.scssfile -}}
+<div id="scss" class="design-system-tabs-content--pane">
+    <div class="design-system-copyable-code-block">
+<!--Checks to see whether the file in scssfile of content page front matter exists; if not, write error message to scss tab-->
+{{- if (fileExists . ) -}}    
+<pre><code id="ds-component-scss">{{- readFile . -}}</code></pre>
+{{- else -}}
+<pre><code id="ds-component-scss">scss partial inside {{$compname}}.md, "{{.}}", does not exist</code></pre>
+{{- end -}}
+                    <div class="ds-copy-button-wrapper">
+                        <button class="button button--medium button--design-system-copy-code" data-clipboard-target="#ds-component-scss">Copy</button>
+                    </div>
+                </div>
+            </div>
+            {{- end -}}
+<!-- Renders scss to css in separate partial based on site config and presence of scss file -->
+{{- if and .Site.Params.renderscsstocss ( $.Scratch.Get "scssHasLength" ) -}}
+        {{- $scssVars := resources.Get "scss/abstracts/_variables.scss" -}}
+        {{- $scssMixins := resources.Get "scss/abstracts/_mixins.scss" -}}
+        {{- $scssFunctions := resources.Get "scss/abstracts/_functions.scss" -}}
+        {{- $scssPartial := resources.Get ( index (split .Params.scssfile "assets/") 1) -}}
+        {{- $scssTitle := add "/css/single-components/" (add (.Title | urlize) ".css") -}}
+        {{- $scssConcat := slice $scssVars $scssMixins $scssFunctions $scssPartial | resources.Concat $scssTitle -}}
+        {{- $scssRendered := $scssConcat | toCSS | postCSS -}}
+        {{- $cssWithSourceMaps := $scssRendered.Content -}}
+        {{- $css := $cssWithSourceMaps | replaceRE "(?m)(\\Q/*# \\EsourceMappingURL=.*)" "" -}}
+    <div id="css" class="design-system-tabs-content--pane">
+        <div class="design-system-copyable-code-block">
+<pre><code id="ds-component-css">{{ $css }}</code></pre>
+            <div class="ds-copy-button-wrapper">
+                <button class="button button--medium button--design-system-copy-code" data-clipboard-target="#ds-component-css">Copy</button>
+            </div>
+        </div>
+    </div>
+{{- end -}}
+<!--Checks to see if js params is not empty, then resets context-->
+{{- with .Params.jsmodule -}}
+<div id="javascript" class="design-system-tabs-content--pane"> 
+    <div class="design-system-copyable-code-block">
+<!--Checks to see whether the file set inside of jsmodules exists, if not write error message to JS tab-->
+    {{- if ( fileExists . ) -}}
+        {{- $jsfile := . -}}
+        {{- $jscomment_begin_regexp := `/\*@@` -}}
+        {{- $jscomment_end_regexp := `@@\*/` -}}
+        {{- $char_or_newline_regexp := `(?:.|\n)*` -}}
+        {{- $jscomment_regexp := printf `(%s(%s)%s)*(%s)` $jscomment_begin_regexp $char_or_newline_regexp $jscomment_end_regexp $char_or_newline_regexp -}}
+        {{- $jscomment := readFile $jsfile | replaceRE $jscomment_regexp "$2" -}}
+        {{- $jscode := readFile $jsfile | replaceRE $jscomment_regexp "$3" | replaceRE `^\s*` "" -}}
+            {{- if gt ( $jscomment | len ) 0 -}}
+                    {{- $.Scratch.Set "hasJsComments" true -}}
+                    {{- $.Scratch.Set "jsComment" $jscomment -}}
+            {{- end -}}
+            
+            <pre><code id="ds-component-js">{{- $jscode -}}</code></pre>
+            <div class="ds-copy-button-wrapper">
+                <button class="button button--medium button--design-system-copy-code" data-clipboard-target="#ds-component-js">Copy</button>
+            </div>
+            
+    {{- else -}}
+            <pre><code id="ds-component-js">jsmodule inside {{$compname}}.md, "{{.}}", does not exist</code></pre>
+    {{- end -}}
+                    
+                </div>       
+            </div>
+            
+            {{- end -}}
+        </div>
+</div>
+{{ .Content }}
+{{- if $.Scratch.Get "hasJsComments" -}}
+<h3>JavaScript</h3>
+{{- $.Scratch.Get "jsComment" | markdownify -}}
+{{- end -}}
+
+

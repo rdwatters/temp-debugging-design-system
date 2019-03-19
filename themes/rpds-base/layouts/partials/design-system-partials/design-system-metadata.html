@@ -1,0 +1,24 @@
+{{- if .Site.Params.sitenoindex -}}
+<meta name="robots" content="noindex">
+<meta name="googlebot" content="noindex">
+{{- end -}}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{.Site.Params.twitter}}" />
+
+{{- if not .IsHome -}}
+<meta name="twitter:title" content="{{.Title}} | {{.Site.Title}}">
+<meta property="og:title" content="{{.Title}} | {{.Site.Title}}" />
+
+{{- else -}}
+
+<meta name="twitter:title" content="{{.Site.Title}}">
+<meta property="og:title" content="{{.Site.Title}}" />
+{{- end -}}
+
+{{- $ogpimg := path.Join "images/" .Site.Params.defaultsocialimage -}}
+
+<meta name="twitter:image" content="{{ $ogpimg | absURL }}" />
+<meta property="og:image" content="{{ $ogpimg | absURL }}" />
+<meta name="twitter:description" content="{{.Description}}" />
+<meta property="og:description" content="{{.Description}}" />

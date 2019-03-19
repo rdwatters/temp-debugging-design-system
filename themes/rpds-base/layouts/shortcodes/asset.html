@@ -1,0 +1,36 @@
+{{- $sourceLink := $.Page.Site.Params.sourcecontrollink -}}
+<div class="design-system-asset">
+    <div class="design-system-asset--info">
+    {{ if eq (.Get "type") "download" }}
+        {{ with .Get "image"}}
+            <div class="design-system-asset--image">
+                <img src="/images/{{.}}" alt="">
+            </div>
+        {{ end }}
+    {{ else if eq (.Get "type") "source" }}
+            <div class="design-system-asset--image">
+                {{ if in $sourceLink "github" }}
+                    <img src="{{ "images/github-icon.svg" | relURL }}" alt="Icon for GitHub hosted source control">
+                {{ else if in $sourceLink "visualstudio" }}
+                    <img src="{{ "images/visual-studio-icon.svg" | relURL }}" alt="Icon for Microsoft Visual Studio">
+                {{ end }}
+            </div>
+    {{ end }}
+    <div class="design-system-asset--description">
+        {{ with .Get "name" }}
+        <h2>{{.}}</h2>
+        {{ end }}
+        {{ with .Get "description"}}
+        <p>{{.}}</p>
+        {{ end }}
+    </div>
+    </div>
+    <div class="design-system-asset--button">
+    {{if eq (.Get "type") "download"}}
+        <a href="{{if .Get "file"}}{{ .Get "file" | relURL }}{{else if .Get "link"}}{{.Get "link"}}{{else}}#{{end}}" class="button button-large" {{if ne (.Get "download") "false"}}download{{else}}target="_blank"{{end}}>{{with .Get "buttontext"}}{{.}}{{else}}Download{{end}}</a>
+    {{ else if eq (.Get "type") "source"}}
+        <a class="button button-large" href="{{$.Site.Params.sourcecontrollink}}" target="_blank">Source Code</a>
+    {{ end }}   
+    </div>
+</div>
+<hr>

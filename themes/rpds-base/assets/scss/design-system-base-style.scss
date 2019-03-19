@@ -1,0 +1,28 @@
+// Design System is a separate stylesheet that will be overwritten by
+// the final site's stylesheet
+
+//Style Guide Uses Same Variables as Main Site Project
+@import "./abstracts/abstracts"; // variables, mixins, functions, utilities
+@import "./design-system-scss/ds-variables";
+@import "./base/base"; //reset, base styles, body/html, fonts
+@import "./elements/elements"; //buttons, anchors, etc (elements in design system)
+
+//Design-system-specific SCSS modules
+
+@import "./design-system-scss/ds-global-header";
+@import "./design-system-scss/ds-search";
+@import "./design-system-scss/ds-global-navigation";
+@import "./design-system-scss/ds-content-listing";
+@import "./design-system-scss/ds-typography"; //mostly to configure the layout of content/brand-identity/typography
+@import "./design-system-scss/ds-color-blocks";
+@import "./design-system-scss/ds-code-blocks";
+@import "./design-system-scss/ds-hero";
+@import "./design-system-scss/ds-page-content";
+@import "./design-system-scss/ds-global-footer";
+@import "./design-system-scss/ds-icons";
+@import "./design-system-scss/ds-component-tabs";
+@import "./design-system-scss/ds-asset";
+
+
+
+

@@ -1,0 +1,12 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- .Title will pull from the individual markdown file. The .Site.Title is pulled from config.toml -->
+	<title>{{ if not .IsHome }}{{.Title}} | {{.Site.Title}}{{ else }}{{.Site.Title}}{{end}}</title>
+
+	{{- partial "design-system-partials/design-system-metadata.html" . -}}
+ 	{{- partialCached "design-system-partials/design-system-favicons.html" . -}}
+	{{- partial "design-system-partials/design-system-stylesheets.html" . -}}
+	{{- partial "stylesheets.html" . -}}
+</head>

@@ -1,0 +1,55 @@
+
+<!-- The following uses Hugo's asset pipeline to concat, minify and fingerprint all design-system-specific-scripts into a single file. It NOT used in page templates -->
+{{- if or ( ne .Section "page-templates" ) ( .IsNode ) -}}
+  {{ if ne $.Section "componentiframes" }}
+    {{ $dslunr := resources.Get "/design-system-scripts/lunr.js" }}
+    {{ $dshighlight := resources.Get "/design-system-scripts/highlight.pack.js" }}
+    {{ $dsclipboard := resources.Get "/design-system-scripts/clipboard.min.js" }}
+    {{ $dssearch := resources.Get "/design-system-scripts/design-system-search.js" }}
+    {{ $dsaddscripting := resources.Get "/design-system-scripts/design-system-additional-scripting.js" }}
+    {{ $dstabs := resources.Get "/design-system-scripts/design-system-component-tabs.js" }}
+    {{ $dscompchange := resources.Get "/design-system-scripts/design-system-change-component-iframe-width.js" }}
+    {{ $dsscripts := slice $dslunr $dshighlight $dsclipboard $dssearch $dsaddscripting $dstabs $dscompchange | resources.Concat "/js/design-system-script.min.js" | minify | fingerprint}}
+    <script src="{{ $dsscripts.RelPermalink }}"></script>
+  {{ end }}
+{{- end -}}
+
+
+<!-- GOOGLE ANALYTICS -->
+{{ if ne $.Section "componentiframes" }}
+{{ with .Site.Params.googleanalyticsid }}
+<script async>
+  (function () {
+    var localTest = new RegExp(/localhost/i);
+    var hostName = window.location.hostname;
+    if (localTest.test(hostName)) {
+      console.log("Local dev. Google Analytics not running.");
+      return;
+    } else {
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', '{{.}}', 'auto');
+      ga('send', 'pageview');
+    }
+  })();
+</script>
+{{ else }}
+<script>
+  var localTest = new RegExp(/localhost/i);
+  var hostName = window.location.hostname;
+  if (localTest.test(hostName)) {
+    console.log("Local Dev. No Google Analytics ID found in config.toml.");
+  }
+</script>
+{{ end }}
+{{ end }}

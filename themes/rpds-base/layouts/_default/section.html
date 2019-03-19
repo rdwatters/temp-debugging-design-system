@@ -1,0 +1,11 @@
+{{- define "rpdsmain" -}}
+<main id="design-system-content">
+	<div class="design-system-content design-system-content--interior">
+	{{ partial "design-system-partials/design-system-hero-interior.html" . }}
+	{{ .Content }}
+	<!-- Begin section page listing, sorted alphabeticall -->
+	{{- partial "design-system-partials/design-system-content-listing.html" ( sort .Pages ".Title" ) -}}
+	<!-- End section page listing -->
+	</div>
+</main>
+{{- end -}}

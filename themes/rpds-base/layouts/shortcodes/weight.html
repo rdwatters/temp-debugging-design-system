@@ -1,0 +1,10 @@
+{{- $font := .Get "font" | urlize -}}
+{{- $name := .Get "name" -}}
+{{- $weight := .Get "weight" -}}
+<div class="design-system-font-weight">
+    <div class="design-system-font-weight--sample-text" style="font-family:'{{$font}}';font-weight:{{$weight}};">
+        Aa
+    </div>   
+    <hr class="design-system-font-weight-hr">
+    <div class="design-system-font-weight--name">{{- $name -}}</div>
+</div>

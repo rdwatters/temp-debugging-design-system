@@ -1,0 +1,18 @@
+<header class="design-system-hero" id="design-system-hero">
+	
+	<ol class="design-system-hero-breadcrumb">
+		<li class="design-system-hero-breadcrumb--link">
+			<a href="{{ "/" | relURL }}" >Home</a>
+		</li>
+		{{- if not .IsNode -}}&nbsp;>&nbsp;
+		<li class="design-system-hero-breadcrumb--link">
+		<a href="{{.Section | urlize | relURL }}" >{{.Section | humanize | title }}</a>
+		</li>
+		{{- end -}}&nbsp;>&nbsp;
+		<li class="design-system-hero-breadcrumb--link design-system-hero-breadcrumb--link__active">{{.Title}}</li>
+	</ol>
+	<h1 class="page-title design-system-hero--title">{{- .Title | humanize | title -}}</h1>
+	{{- with .Description -}}
+	<p class="design-system-hero--lead-paragraph">{{. | markdownify}}</p>
+	{{- end -}}
+</header>

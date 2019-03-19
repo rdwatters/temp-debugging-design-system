@@ -1,0 +1,44 @@
+<!-- Global Navigation Start -->
+<nav id="design-system-global-navigation">
+	<div id="design-system-global-navigation--site-title">
+		<h3>{{.Site.Title}}</h3>
+      <a href="#" id="design-system-global-navigation-close-nav">
+         {{- partial "design-system-partials/design-system-close-icon-2.html" . -}}
+      </a>
+	</div>
+   <div id="design-system-global-navigation--wrapper-inner">
+   	 <ul class="design-system-global-navigation--menu">
+   	    {{ $currentPage := . }}
+   	    {{ range .Site.Menus.main }}
+   	        {{ if .HasChildren }}
+   	            <li {{ if $currentPage.IsMenuCurrent "main" . }}class="design-system-global-navigation--active-menu-item"{{ end }}>
+   	                <!-- <a class="design-system-global-navigation--parent-item" href="#">
+   	                    {{- .Name | humanize | title -}}
+   	                    <hr>
+   	                </a> -->
+   	                <div class="design-system-global-navigation--parent-item">
+                          {{- .Name | humanize | title -}}
+                          <hr>
+                      </div>
+   	                <ul class="design-system-global-navigation--sub-menu">
+   	            		<li {{ if $currentPage.IsMenuCurrent "main" . }}class="design-system-global-navigation--active-sub-menu-item"{{ end }}>
+   	            			<a href="/{{.Name | urlize}}">Overview</a>
+   	            		</li>
+   	                {{ range .Children }}
+   	                    <li {{ if $currentPage.IsMenuCurrent "main" . }}class="design-system-global-navigation--active-sub-menu-item"{{ end }}>
+   	                        <a href="{{ .URL }}">{{- replace .Name "-" " " | title -}}</a>
+   	                    </li>
+   	                {{ end }}
+   	            </ul>
+   	            </li>    
+   	        {{ else }}
+   	            <li>
+   	                <a href="{{ .URL }}">
+   	                    {{- .Name -}}
+   	                </a>
+   	            </li>
+   	        {{ end }}
+   	    {{ end }}
+   	</ul>
+   </div>
+</nav>

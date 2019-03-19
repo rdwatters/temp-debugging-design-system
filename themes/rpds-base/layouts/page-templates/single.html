@@ -1,0 +1,65 @@
+{{ define "pagetemplate" }}
+
+<style>
+    code {
+    color:red!important;
+    }
+</style>
+<div style="display:block; width:90%; max-width: 800px; margin-left:auto; margin-right:auto;margin-top:40px;margin-bottom:60px;">
+    {{- $filebase := index (split (.File.Path) ".") 0 -}}
+    <h2>You have not created a corresponding template for <strong>"{{.Name}}"</strong></h2>
+
+<p>If you are seeing this, you have created a content file at <code>content/page-templates/{{.File.BaseFileName}}.md</code>,
+    but have either failed to declare the appropriate <code>layout:</code> (in this case, it should read <code>layout:
+        "{{.File.BaseFileName}}"</code>) inside the file's metadata (front matter; see example below) <em>OR</em> you do not have the corresponding
+    page layout file here: <code>layouts/page-templates/{{.File.BaseFileName}}.html</code>
+    </p>
+    <p>
+        <strong style="color:red">THE EASIEST WAY TO QUICKLY CREATE, RENAME, OR REMOVE PAGE TEMPLATE FILES IS THROUGH THE RPDS CLI:</strong>
+    </p>
+    <ul>
+        <li>
+            <code>rpds -pt {{.File.BaseFileName}}</code> This will scaffold all the necessary
+            <strong>new</strong> page template files for you.</li>
+        <li>
+            Or if you are trying to rename the <code>{{.File.BaseFileName}}</code> template:<br>
+            <code>rpds -rnpt {{.File.BaseFileName}} new-page-template-name</code> This will effectively rename and
+            reconfigure all existing page templates files.</li>
+        <li>
+            <code>rpds -rmpt {{.File.BaseFileName}}</code> This will remove all files for the <code>{{.File.BaseFileName}}</code> page template.
+        </li>
+    </ul>
+    <p>If you want to do this manually, you will need to define the page template by putting all your html and components between the
+        <code>define</code> inside
+        <code>layouts/page-templates/{{.File.BaseFileName}}.html</code>:</p>
+
+    <pre><code>
+<code>{</code><code>{</code> define "pagetemplate" <code>}</code><code>}</code>
+...your code here...
+<code>{</code><code>{</code> end <code>}</code><code>}</code>
+</code></pre>
+
+    <p>Remember that in <code>content/{{.File.Path}}</code>, you need to declare a <code>layout</code> in the front matter that corresponds to the file you create in <code>layouts/page-templates/</code> but <strong>without</strong> the <code>.html</code>. In this case, the front matter would look as follows:</p>
+
+    <pre><code>
+---
+title: {{.Title}}
+publishdate: {{.PublishDate}}
+...
+layout: "{{.File.BaseFileName}}"
+...etc
+---
+</code></pre>
+
+
+    <h2>Design System Source Structure:</h2>
+    <p>Remember that for each new page template, you will need all three of the following:</p>
+    <ul>
+        <li><strong>Content file: </strong><code>content/page-templates/<code><</code>page-template<code>></code>.md</code></li>
+        <li><strong>Page template file: </strong><code>layouts/page-templates/<code><</code>page-template<code>></code>.html</code></li>
+        <li><strong>SCSS partial: </strong><code>assets/scss/page-templates/_<code><</code>page-template<code>></code>.scss</code><strong style="font-weight:bold;color:red;">*</strong></li>
+    </ul>
+        <p><strong style="font-weight:bold;color:red;">*</strong> These are page-specific styles that should be added to end of <code>assest/scss/styles.scss</code>. <strong>Note:</strong> Not all page templates will require their own specific styles, so it's entirely possible that these
+        <code>.scss</code> partials will be empty.</p>
+</div>
+{{ end }}

@@ -1,0 +1,23 @@
+{{ if .IsNamedParams }}
+	{{ if ne (.Get "render") "false" }}
+	    <div class="design-system-rendered-code">
+	        {{ .Inner | markdownify }}
+	    </div>
+	{{- end -}}
+{{- else if ne (.Get 0) "false" -}}
+	<div class="design-system-rendered-code">
+        {{ .Inner | markdownify }}
+    </div>
+{{- end -}}
+{{ $idstring := replace (.Inner | plainify ) " " "" }} 
+{{ $id := index (split ($idstring | lower | truncate 10) " ") 0}}
+<div class="design-system-copyable-code-block">
+<pre>
+<code id="{{$id}}">
+{{ .Inner | htmlEscape | htmlUnescape }}
+</code>
+</pre>
+    <div class="ds-copy-button-wrapper">
+        <button class="button button--medium button--design-system-copy-code" data-clipboard-target="#{{$id}}">Copy</button>
+    </div>
+</div>

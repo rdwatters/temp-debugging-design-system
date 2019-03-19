@@ -1,0 +1,52 @@
+
+//DESIGN-SYSTEM VARIABLES
+// Note that many of these variables are pulling from those defined in abstracts/_variables.scss
+
+// DS Breakpoints
+// By default, these are set to the same values given in _variables.scss
+// For all design-system scss partials, the media query mixin uses these values
+// For example, `@include MQ(DSM)` rather than `@include MQ(M)`
+$DSS:$S;
+$DSM:$M;
+$DSL:$L;
+$DSXL:$XL;
+$DSMAX:$MAX;
+
+// DS Header
+$ds-global-header-height:60px;
+$ds-global-home-link-image-height:$ds-global-header-height * .6;//Note that this is the value for L+ screen sizes, which will shrink by 20% for smartphone and tablet
+$ds-global-header-background-color:$white;
+$ds-global-header-icon-color:$black;
+$ds-global-header-link-color:$black;
+$ds-search-icon-size:30px;
+$ds-menu-icon-size:30px;
+
+
+// DS Search
+$ds-search-bg-color: $ds-global-header-background-color;
+// Page Layout
+$ds-lead-paragraph-font-size: $base-font-size * 1.3;
+
+// DS Navigation
+$ds-navigation-link-color:$black;
+$ds-navigation-link-color-active:$white;
+$ds-navigation-link-background-color-active:$brand-primary;
+$ds-navigation-background-color:$base-background-color; //sets bg color of off-canvas navigation
+$ds-navigation-width:240px; //sets width of off-canvas navigation
+$ds-navigation-text-transform: none;
+
+// DS Homepage Hero
+// Fills in parts of the default homepage hero graphic
+// This hero graphic can be overwritten using the homepageheroimage param inside config.toml
+$design-system-homepage-default-image-fill-color: $brand-primary; 
+
+// DS Section Listing (tiles on homepage and section landing pages)
+$ds-content-listing-border: solid 1px #D7D7D7;
+$ds-content-listing-border-radius: 10px;
+
+
+// DS Footer
+// Sets styles of thin global footer of the DS site
+$ds-global-footer-background-color:$black;
+$ds-global-footer-link-color: $white;
+$ds-global-footer-min-height: 80px;

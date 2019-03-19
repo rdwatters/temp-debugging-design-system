@@ -1,0 +1,9 @@
+{{- $el := add "<" (.Get "el") -}}
+{{- $class := .Get "class" -}}
+{{- $classfull := add (add (add "class='" (.Get "class")) " design-system-typography-example'") ">" -}}
+{{- $openingel := add (add $el " ") $classfull |safeHTML -}}
+{{- $closingel := add (add "</" (.Get "el")) ">" | safeHTML -}}
+{{- $eltitle := .Get "name" | safeHTML -}}
+{{- $openingel -}}The quick brown fox jumps over the lazy dog.{{- $closingel -}}
+<p class="design-system-pangram-label">{{$eltitle}}{{with .Get "class"}}, <code>.{{$class}}</code>{{end}}</p>
+<!-- The quick brown fox jumps over the lazy dog. -->

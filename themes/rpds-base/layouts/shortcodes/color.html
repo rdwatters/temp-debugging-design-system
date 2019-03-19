@@ -1,0 +1,12 @@
+{{- $name := .Get "name" -}}
+{{- $hex := .Get "hex" -}}
+{{- $rgb := .Get "rgb" -}}
+<div class="design-system-color-block">
+    {{- if .Get "class" -}}
+    <div class="design-system-color-block--color {{.Get "class"}}"></div>
+    {{- else if .Get "hex" -}} 
+    <div class="design-system-color-block--color" style="background-color:{{.Get "hex"}};"></div>
+    {{- end -}}
+ <div class="design-system-color-block--info">{{ $name }}</div>
+ <div class="design-system-color-block--info"><code>{{ if .Get "hex" }}{{.Get "hex"}}{{else if .Get "class"}}.{{.Get "class"}}{{end}}</code></div>
+</div>
