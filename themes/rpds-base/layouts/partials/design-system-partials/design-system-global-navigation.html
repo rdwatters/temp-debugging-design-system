@@ -33,9 +33,10 @@
    	            </li>    
    	        {{ else }}
    	            <li>
-   	                <a href="{{ .URL }}">
-   	                    {{- .Name -}}
-   	                </a>
+   	                <div class="design-system-global-navigation--parent-item">
+   	                	{{- .Name | humanize | title -}}
+   	                	<hr>
+   	                </div>
    	            </li>
    	        {{ end }}
    	    {{ end }}
