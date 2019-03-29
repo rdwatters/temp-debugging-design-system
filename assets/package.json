@@ -11,7 +11,7 @@
     "development": "webpack --mode development --module-bind js=babel-loader --watch"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.0.0-beta.55",
+    "@babel/preset-env": "^7.3.4",
     "autoprefixer": "^9.0.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

@@ -9,9 +9,6 @@
 		"title":"{{- $page.Title | humanize | title -}}",
 		"section":"{{- .Section | humanize | title -}}",
 		"description":"{{- .Description | markdownify | plainify -}}",
-		{{- with .Params.tags -}}
-		"tags": "{{ delimit . " "}}",
-		{{- end -}}
 		"content":{{- $page.Plain | jsonify -}}}
 		{{end}}
 {{- end -}}

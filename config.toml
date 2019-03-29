@@ -5,7 +5,8 @@ baseURL = ""
 languageCode = "en-us"
 # Logging
 log = true
-verboseLog = false
+verboseLog = false 
+disableKinds = ["taxonomy","taxonomyTerm"]
 # Site <title>
 title = "Rightpoint Design System"
 # Defines dir name when running 'hugo' to build site
