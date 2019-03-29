@@ -1,6 +1,6 @@
 <ul class="design-system-content-listing">
     {{- range . -}}
-        {{- if ne ( .Title | lower) "componentiframes" -}}
+        {{- if and (ne ( .Title | lower) "componentiframes") (ne .Section "componentiframes") -}}
         <li class="design-system-content-listing-item">
             <a class="design-system-content-listing-item--link" href="{{.RelPermalink}}">
                 <h2 class="design-system-content-listing-item--heading">{{- .Title | humanize | title -}}</h2>
